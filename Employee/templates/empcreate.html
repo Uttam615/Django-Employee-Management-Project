@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Employee</title>
+    <link rel="stylesheet" href="{% static 'empCreate.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Create Employee</h2>
+        <form id="empForm">
+            <label>Name:<input type="text" id="name" name="name"></label><br />
+            <label>Email:<input type="email" id="email" name="email"></label><br />
+            <label>Location:<input type="text" id="location" name="location"></label><br />
+            <label>Position:<input type="text" id="position" name="position"></label><br />
+            <label>Department_Id:<input type="number" id="department" name="department"></label><br />
+            <label>Mobile Number:<input type="number" id="mobile_number" name="mobile_number"></label><br />
+            <label>Salary Number:<input type="text" id="salary" name="salary"></label><br />
+            <label>Joining_Date:<input type="date" id="joining_date" name="joining_date"></label><br />
+            <button type="submit">Submit</button>
+        </form>
+        <div class="message" id="message"></div>
+        <div class="error" id="error"></div>
+        <script src="{% static 'empCreate.js' %}"></script>
+
+    </div>
+
+
+
+</body>
+
+</html>
