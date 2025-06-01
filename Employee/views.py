@@ -13,6 +13,8 @@ from django.views import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from.serializers import EmpListSerializer
+from django.http import Http404
+from django.utils.decorators import method_decorator
 
 
 
@@ -129,6 +131,41 @@ class empPostCreateApiView(APIView):
 def class_form_emp_page(request):
     return render(request,'classEmpCreate.html')
 
+@method_decorator(csrf_exempt, name='dispatch')
+class empUpdateDeleteApi(APIView):
+
+    def get_object(self,id):
+        try:
+            return empList.objects.get(id=id)
+        except empList.DoesNotExist:
+            return None
+        
+    def put(self,request,id):
+        employee = self.get_object(id=id)
+        if not employee:
+            return Response({'error':"Employee not found"},status=status.HTTP_404_NOT_FOUND)
+        serializer = EmpListSerializer(employee, data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message":"Update Data","data":serializer.data},status=status.HTTP_200_OK)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self,request,id):
+        employee = self.get_object(id=id)
+        if not employee:
+            return Response({"message":"Data Not found"},status=status.HTTP_404_NOT_FOUND)
+        employee.delete()
+        return Response({'message':"Deleted successfully"},status=status.HTTP_200_OK)
+    
+
+def update_emp(request):
+    return render(request,'updateEmp.html')
+
+def delete_emp(request):
+    return render(request,'empDelete.html')
+    
+
+        
 
     
 

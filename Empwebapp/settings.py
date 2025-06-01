@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     "rest_framework",
 ]
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # or the path where your static folder is located
+]
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",

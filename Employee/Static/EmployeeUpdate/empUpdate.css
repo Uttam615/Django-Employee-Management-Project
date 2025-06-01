@@ -1,0 +1,115 @@
+/* empUpdate.css */
+
+body {
+    background-color: gray;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px 30px;
+    max-width: 500px;
+    width: 100%;
+    border: none;
+    box-sizing: content-box;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #222;
+    letter-spacing: 2px;
+}
+
+form label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: #333;
+    font-size: 1rem;
+}
+
+form label span {
+    flex: 1;
+    margin-right: 10px;
+}
+
+form label input {
+    flex: 3;
+    padding: 5px 6px;
+    border-radius: 10px;
+    border: 2px solid #999;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: #fdfdfd;
+}
+
+form label input:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 5px rgba(58, 134, 255, 0.5);
+    background-color: #fff;
+}
+
+form label input:invalid {
+    border-color: #d90429;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #3a86ff;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(58, 134, 255, 0.3);
+}
+
+button[type="submit"]:hover {
+    background-color: #265ecf;
+    box-shadow: 0 6px 14px rgba(38, 94, 207, 0.5);
+}
+
+button[type="submit"]:active {
+    background-color: #1b3f89;
+    box-shadow: none;
+}
+
+#errorMessages,
+#successMessage {
+    margin-top: 15px;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+}
+
+#errorMessages {
+    background-color: #ffe5e5;
+    color: #b00020;
+}
+
+#successMessage {
+    background-color: #daf5da;
+    color: #1b6f1b;
+}

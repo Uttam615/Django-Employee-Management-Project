@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Update Employee</title>
+    <script src="{% static 'EmployeeUpdate/empUpdate.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'EmployeeUpdate/empUpdate.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Update Employee</h1>
+        <form id="empUpdateForm">
+            <label><span>Employee ID (to update):</span> <input type="number" id="emp_id" name="emp_id"
+                    required /></label>
+            <label><span>Name:</span> <input type="text" id="name" name="name" /></label>
+            <label><span>Email:</span> <input type="email" id="email" name="email" /></label>
+            <label><span>Location:</span> <input type="text" id="location" name="location" /></label>
+            <label><span>Position:</span> <input type="text" id="position" name="position" /></label>
+            <label><span>Department ID:</span> <input type="number" id="department" name="department" /></label>
+            <label><span>Mobile Number:</span> <input type="text" id="mobile_number" name="mobile_number" /></label>
+            <label><span>Salary:</span> <input type="text" id="salary" name="salary" /></label>
+            <label><span>Joining Date:</span> <input type="date" id="joining_date" name="joining_date" /></label>
+            <button type="submit">Update Employee</button>
+        </form>
+
+        <div id="errorMessages" style="color: red;"></div>
+        <div id="successMessage" style="color: green;"></div>
+    </div>
+</body>
+
+</html>
