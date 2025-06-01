@@ -12,6 +12,9 @@ urlpatterns = [
     
     path('empList',views.EmpListApiView.as_view(),name='empList'),#Get Item what we created allown only Get method
     path('class/api-create/',views.empPostCreateApiView.as_view(),name='classapi-create'),#Api-using class and DRF
+
+
+    
     path('updateDelete/<int:id>/',views.empUpdateDeleteApi.as_view(),name='updateDelete'),
     path('employees/update/', views.update_emp, name='employee-update-form'),
     path('employees/Delete/',views.delete_emp,name='deleteEmployee')

@@ -1,124 +1,148 @@
-/* Emp.css */
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Google Font */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #fce3ec, #f9f9f9);
-    margin: 0;
-    padding: 20px;
-    color: #333;
+    background: linear-gradient(to right, #f0f4f8, #d9e8f5);
+    padding: 40px 20px;
+    color: #2c3e50;
 }
 
-/* Container */
 .container {
-    max-width: 1100px;
+    width: 100%;
+    max-width: 100%;
     margin: auto;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: darkgray;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
-.container:hover {
-    transform: scale(1.01);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-}
-
-/* Header */
 h2 {
     text-align: center;
-    font-size: 32px;
     margin-bottom: 25px;
-    color: #8e24aa;
-    text-shadow: 0 1px 0 #eee;
+    font-size: 2em;
+    color: #2d3436;
+}
+
+/* Button */
+button {
+    background-color: #3498db;
+    color:black;
+    padding: 10px 10px;
+    border: 3px solid black;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+a[href*="class_emp_form"] button {
+    margin-bottom: 10px;
+    font-size: 1rem;
 }
 
 /* Table */
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 15px;
-    min-width: 900px;
-    background-color: #ffffff;
-    border-radius: 10px;
+    border: 3px solid black; /* Bold outer border */
+    border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    margin-top: 10px;
 }
 
-/* Table Head */
 thead {
-    background: linear-gradient(to right, #8e24aa, #3949ab);
+    background-color:black;
     color: white;
 }
 
 thead th {
-    padding: 14px 18px;
-    text-align: left;
-    position: relative;
-    transition: background 0.3s ease;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-thead th:hover {
-    background-color: #6a1b9a;
-}
-
-/* Header sort icon hint (optional visual) */
-thead th::after {
-    content: '⇅';
-    font-size: 12px;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.3;
-}
-
-/* Table Body */
-tbody tr {
-    transition: all 0.3s ease;
-    border-bottom: 1px solid #eee;
-}
-
-tbody tr:hover {
-    background: linear-gradient(90deg, #f3e5f5, #e1f5fe);
-    box-shadow: 0 2px 12px rgba(0, 140, 255, 0.2);
+    padding: 7px 10px;
+    font-size: 1rem;
+    text-align: center;
+    border: 4px solid blue; /* Bold header borders */
 }
 
 tbody td {
-    padding: 12px 18px;
-    vertical-align: middle;
-    color: #444;
+    padding:5px 10px;
+    font-size: 0.95rem;
+    border: 4px solid black; /* Bold cell borders */
 }
 
-/* Zebra striping */
-tbody tr:nth-child(even) {
-    background-color: #fafafa;
+
+tbody tr:hover {
+    background-color: #e2f0fb;
+    transition: background-color 0.2s ease-in-out;
 }
 
-/* No data row */
-td[colspan="10"] {
+/* Actions Buttons */
+td a button {
+    margin: 4px;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
+
+
+td a button:nth-child(1):hover {
+    background-color: #27ae60;
+}
+
+
+td a button:nth-child(2):hover {
+    background-color: #c0392b;
+}
+
+/* Empty Message */
+td[colspan="11"] {
     text-align: center;
-    padding: 20px;
-    font-style: italic;
-    background: #fff;
-    color: #999;
+    color: #777;
+    padding: 10px 0;
 }
 
-/* Responsive Scroll */
+/* Responsive Table */
 @media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-
-    table {
+    table, thead, tbody, th, td, tr {
         display: block;
-        overflow-x: auto;
-        white-space: nowrap;
     }
 
-    thead th::after {
+    thead {
         display: none;
+    }
+
+    tr {
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    td {
+        padding-left: 50%;
+        position: relative;
+        text-align: right;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        top: 14px;
+        font-weight: bold;
+        text-transform: capitalize;
+        color: #444;
     }
 }
