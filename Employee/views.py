@@ -15,6 +15,7 @@ from rest_framework.response import Response
 from.serializers import EmpListSerializer
 from django.http import Http404
 from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -114,9 +115,11 @@ class EmpListApiView(APIView):
         serializer = EmpListSerializer(employee,many=True)
         return Response(serializer.data)
     
+
+@login_required  
 def ClassemployeeList(request):
     employees = empList.objects.select_related('department').all()
-    return render(request,'classEmpList.html',{'employees':employees})
+    return render(request,'classEmpList.html',{'employees':employees,'user':request.user})
 
     
 
@@ -151,6 +154,7 @@ class empUpdateDeleteApi(APIView):
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self,request,id):
+        print(f"Deleting emp id={id}")  # debug
         employee = self.get_object(id=id)
         if not employee:
             return Response({"message":"Data Not found"},status=status.HTTP_404_NOT_FOUND)

@@ -1,148 +1,163 @@
-/* Reset & Base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #f0f4f8, #d9e8f5);
-    padding: 40px 20px;
-    color: #2c3e50;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    width: 100%;
-    max-width: 100%;
-    margin: auto;
-    background-color: darkgray;
+    width: 90%;
+    margin: 20px auto;
+    background-color: darkseagreen;
     padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 2em;
-    color: #2d3436;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 22px;
 }
 
-/* Button */
-button {
-    background-color: #3498db;
-    color:black;
-    padding: 10px 10px;
-    border: 3px solid black;
-    border-radius: 8px;
-    font-weight: 600;
+/* Header layout */
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* welcome left, buttons right */
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.right-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-msg {
+    font-size: 14px;
+    color: white;
+}
+
+/* Buttons */
+.logout-btn, .create-btn {
+    background-color: springgreen;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+    transition: 0.3s ease-in-out;
+    font-weight: bolder;
 }
 
-button:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-}
-
-a[href*="class_emp_form"] button {
-    margin-bottom: 10px;
-    font-size: 1rem;
+.logout-btn:hover, .create-btn:hover {
+    background-color: red;
 }
 
 /* Table */
 table {
     width: 100%;
     border-collapse: collapse;
-    border: 3px solid black; /* Bold outer border */
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    margin-top: 10px;
+    font-size: 12px;
+    min-width: 1000px; /* ensures table scrolls on small screens */
 }
 
-thead {
-    background-color:black;
+th {
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    padding: 8px;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+td {
+    padding: 8px;
+    border: 2px solid black;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+tr:hover {
+    background-color: aqua;
+    cursor: pointer;
+    transition: 0.3s ease;
     color: white;
 }
 
-thead th {
-    padding: 7px 10px;
-    font-size: 1rem;
-    text-align: center;
-    border: 4px solid blue; /* Bold header borders */
+td:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-tbody td {
-    padding:5px 10px;
-    font-size: 0.95rem;
-    border: 4px solid black; /* Bold cell borders */
+/* Action buttons */
+.delete-btn, .update-btn {
+    padding: 5px 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
 }
 
-
-tbody tr:hover {
-    background-color: #e2f0fb;
-    transition: background-color 0.2s ease-in-out;
+.delete-btn {
+    background-color: red;
+    color: black;
 }
 
-/* Actions Buttons */
-td a button {
-    margin: 4px;
-    padding: 10px 10px;
-    font-size: 0.9rem;
-    border-radius: 6px;
+.delete-btn:hover {
+    background-color: springgreen;
+    color: whitesmoke;
 }
 
-
-td a button:nth-child(1):hover {
-    background-color: #27ae60;
+.update-btn {
+    background-color: black;
+    color: white;
 }
 
-
-td a button:nth-child(2):hover {
-    background-color: #c0392b;
+.update-btn:hover {
+    background-color: blue;
+    color: black;
 }
 
-/* Empty Message */
-td[colspan="11"] {
-    text-align: center;
-    color: #777;
-    padding: 10px 0;
-}
-
-/* Responsive Table */
+/* 📱 Mobile responsive tweaks */
 @media (max-width: 768px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
+    .top-header {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start; /* stack items to left on mobile */
     }
 
-    thead {
-        display: none;
+    .right-buttons {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-top: 10px;
     }
 
-    tr {
-        margin-bottom: 20px;
-        background-color: #ffffff;
-        border-radius: 10px;
-        padding: 15px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    .welcome-msg {
+        font-size: 12px;
+        margin-bottom: 5px;
     }
 
-    td {
-        padding-left: 50%;
-        position: relative;
-        text-align: right;
+    .logout-btn, .create-btn {
+        font-size: 14px;
+        padding: 8px 16px;
     }
 
-    td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 15px;
-        top: 14px;
-        font-weight: bold;
-        text-transform: capitalize;
-        color: #444;
+    td:last-child {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
     }
 }

@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employe</title>
+    <title>Employee List</title>
     <link rel="stylesheet" href="{% static 'Emp.css' %}" >
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="header">
         <h2>Employee List</h2>
+        <div class="header-actions">
+            <a href="{% url 'create_employee' %}" class="create-btn">Create New Employee</a>
+            <a href="#" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    <div class="container">
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>
@@ -24,6 +29,7 @@
                     <th>Mobile Number</th>
                     <th>Salary</th>
                     <th>Joining Date</th>
+                    <th>Actions</th> {# New column for buttons #}
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +37,7 @@
                 <tr>
                     <td>{{emp.id}}</td>
                     <td>{{emp.name}}</td>
+                    <td>{{emp.email}}</td> {# Added Email field here #}
                     <td>{{emp.location}}</td>
                     <td>{{emp.position}}</td>
                     <td>{{emp.department.department_name}}</td>
@@ -38,18 +45,18 @@
                     <td>{{emp.mobile_number}}</td>
                     <td>{{emp.salary}}</td>
                     <td>{{emp.joining_date}}</td>
+                    <td class="action-buttons"> {# Container for action buttons #}
+                        <a href="{% url 'update_employee' emp.id %}" class="update-btn">Update</a>
+                        <a href="{% url 'delete_employee' emp.id %}" class="delete-btn">Delete</a>
+                    </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td  colspan="10">No employees found</td>
+                    <td colspan="11">No employees found</td> {# Increased colspan to 11 #}
                 </tr>
                 {% endfor %}
-
             </tbody>
-
-
         </table>
     </div>
-    
 </body>
 </html>

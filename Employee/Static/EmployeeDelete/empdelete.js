@@ -1,3 +1,18 @@
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
 const deleteEmployee = () => {
     const empId = document.getElementById("empid").value;
     const respondMsg = document.getElementById("respondMsg");
@@ -11,11 +26,15 @@ const deleteEmployee = () => {
     const confirmDelete = confirm("Are you sure you want to delete this employee?");
     if (!confirmDelete) return;
 
+    const csrftoken = getCookie('csrftoken');
+
     fetch(`/updateDelete/${empId}/`, {
         method: 'DELETE',
         headers: {
-            'Content-Type': "application/json",
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrftoken
         },
+        credentials: 'same-origin',
     })
     .then(response => {
         if (response.status === 200) {
@@ -38,4 +57,3 @@ const deleteEmployee = () => {
         respondMsg.style.color = 'red';
     });
 }
-

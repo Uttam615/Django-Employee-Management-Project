@@ -1,22 +1,26 @@
-{%load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Employee Delete</title>
-    <link rel="stylesheet" href="{% static 'EmployeeDelete/empdelete.css'%}"> 
-    <script src="{% static 'EmployeeDelete/empdelete.js'%}"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'EmployeeDelete/empdelete.css' %}" />
+    <script src="{% static 'EmployeeDelete/empdelete.js' %}" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
         <h2>Delete Employee</h2>
         <label for="empid">Enter the Employee Id to Delete:</label>
-        <input type="number" id="empid" placeholder="Employee ID">
+        <input type="number" id="empid" placeholder="Employee ID" />
         <button onclick="deleteEmployee()">Delete</button>
         <p id="respondMsg"></p>
     </div>
-    
+
+    <!-- Hidden form to set CSRF cookie -->
+    <form style="display:none;">
+        {% csrf_token %}
+    </form>
 </body>
 </html>

@@ -1,0 +1,47 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Poppin',sans-serif;
+    background-color: aquamarine;
+    color:black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.logout-container{
+    background-color: rgb(152, 148, 148);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+}
+.logout-container h2{
+    margin-bottom: 10px;
+    font-size: 23px;
+    color: white;
+}
+.logout-container p{
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: white;
+}
+.button-group{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.button{
+    text-decoration: none;
+    background-color: black;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;  
+}
+.button:hover{
+    background-color: red;
+}

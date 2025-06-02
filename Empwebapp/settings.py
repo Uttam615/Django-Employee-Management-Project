@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Employee",
     "rest_framework",
+    "accounts",
 ]
 
 STATICFILES_DIRS = [
@@ -88,8 +89,9 @@ DATABASES = {
         "PORT":3306
     }
 }
-
-
+LOGIN_REDIRECT_URL = '/classEmpList/'  
+LOGOUT_REDIRECT_URL = '/account/login/'
+LOGIN_URL = '/account/login/'
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
